@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model EduadminCoursePortal.Models.Participant
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+<div class="single-participant-wrapper">
+    <hr />
+    <i id="btnRemove" type="button" onclick="BookingParticipants.DeleteParticipant(this)" class="fa fa-trash-o itemFocused removeParticipant" style="color: red; font-size: 30px; cursor: pointer;"></i>
+    <div id="contactPersonLabel" class="row" style="display: none">
+        <div class="col-sm-12" style="margin-left: 15px">
+            @Html.LabelFor(x => x.IsContactPerson)
+        </div>
+    </div>
+    @Html.HiddenFor(x => x.PersonID)
+    @Html.HiddenFor(x => x.RequireCivicRegistrationNumber)
+    <div class="row">
+        @Html.EditorFor(x => x.FirstName, "_TextInput")
+        @Html.EditorFor(x => x.LastName, "_TextInput")
+    </div>
+    <div class="row">
+        @Html.EditorFor(x => x.Email, "_TextInput", new
+        {
+            inputType = "email"
+        })
+        @Html.EditorFor(x => x.CivicRegistrationNumber, "_TextInput")
+    </div>
+
+    <div class="ParticipantPriceNameTemplate" style="display: none;">
+        @if (Model.PriceNames != null && Model.PriceNames.Count == 1 && Model.PriceNames.FirstOrDefault().PriceNameId > 0)
+        {
+            @Html.HiddenFor(x => x.PriceNameId, new
+            {
+                @class = "formValue",
+                data_value = Model.PriceNames.First().Price,
+                data_type = "hidden",
+                Value = Model?.PriceNames?.FirstOrDefault()?.PriceNameId ?? 0
+            })
+        }
+        else if (Model.PriceNames != null)
+        {
+            if (Model.PriceNames.Count > 1)
+            {
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @foreach (var priceName in Model.PriceNames)
+                            {
+                                <label class="control-label">
+                                    @Html.RadioButtonFor(x => x.PriceNameId, priceName.PriceNameId, new
+                                    {
+                                        @class = "formValue",
+                                        data_value = priceName.Price,
+                                        data_type = "radio"
+                                    })
+                                    @priceName.Description
+                                </label>
+                                <span>@priceName.Price.ToString("c0")</span>
+                            }
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.ValidationMessageFor(x => x.PriceNameId, null, new
+                            {
+                                @class = "text-danger"
+                            })
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        @if (Model.Sessions != null && Model.Sessions.Count > 0)
+        {
+            for (var i = 0; i < Model.Sessions.Count; i++)
+            {
+                @Html.EditorFor(x => x.Sessions[i], "_Session")
+            }
+        }
+        @if (Model.ParticipantQuestions != null && Model.ParticipantQuestions.Count > 0)
+        {
+            @Html.EditorFor(x => x.ParticipantQuestions, "_Questions")
+        }
+    </div>
+    <div class="participantPriceNamePlaceholder"></div>
+    <div class="participantSubEventPlaceholder"></div>
+</div>

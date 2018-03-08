@@ -1,0 +1,48 @@
+﻿@using EduadminCoursePortal.Models.Booking
+@model SelectQuestion
+@{
+    var cssClass = ViewData["cssClass"] ?? "col-sm-6";
+    var useRow = (bool?)ViewData["useRow"] ?? false;
+    var label = (string)ViewData["label"];
+    var errorMsg = (string)ViewData["errorMsg"];
+}
+
+@Html.Raw(useRow ? "<div class='row' >" : "")
+<div class="@cssClass">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12">
+                @Html.LabelFor(x => x, label, new
+                {
+                    @class = "control-label"
+                })
+                @switch (Model.DisplayType)
+                {
+                    case SelectQuestionDisplayType.Dropdown:
+                        @Html.DropDownListFor(x => x.AnswerId, Model.Alternatives.Select(x => new SelectListItem
+                        {
+                            Text = x.AlternativeText,
+                            Value = x.AnswerId.ToString()
+                        }))
+                        break;
+                    case SelectQuestionDisplayType.Radiobutton:
+                        foreach (var alternative in Model.Alternatives)
+                        {
+                            <span>@alternative.AlternativeText</span>
+                            @Html.RadioButtonFor(x => x.AnswerId, alternative.AnswerId)
+                        }
+                        break;
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                @Html.ValidationMessageFor(x => x, errorMsg, new
+                {
+                    @class = "text-danger"
+                })
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Raw(useRow ? "</div>" : "")

@@ -1,0 +1,85 @@
+﻿@{
+    var inputType = ViewData["inputType"] ?? (ViewData.ModelMetadata.DataTypeName == "EmailAddress" ? "email" : "text");
+
+    var cssClass = ViewData["cssClass"] ?? "col-sm-6";
+    var useRow = (bool?)ViewData["useRow"] ?? false;
+    var useNoPaddingRow = (bool?)ViewData["useNoPaddingRow"] ?? false;
+    var isTextArea = (bool?)ViewData["isTextArea"] ?? false;
+    var label = (string)ViewData["label"];
+    var errorMsg = (string)ViewData["errorMsg"];
+    var inputStyle = (string)ViewData["inputStyle"] ?? "style=''";
+    var validcbExtraClass = ViewData["inputcbClass"] ?? "";
+
+    var htmlAttributes = new Dictionary<string, object>();
+    htmlAttributes.Add("class", "form-control");
+    htmlAttributes.Add("type", inputType);
+
+    var price = ViewData["price"] as decimal?;
+
+    var additionalHtmlAttributes = ViewData["htmlAttributes"] as IEnumerable<KeyValuePair<string, object>>;
+
+    if (ViewData.ModelMetadata.AdditionalValues.TryGetValue("mask", out var tmp))
+    {
+        htmlAttributes.Add("data-mask", tmp);
+    }
+
+    if (ViewData.ModelMetadata.AdditionalValues.TryGetValue("casing", out tmp))
+    {
+        htmlAttributes.Add("data-casing", tmp);
+    }
+
+    if (ViewData.ModelMetadata.AdditionalValues.TryGetValue("Placeholder", out var placeholder))
+    {
+        htmlAttributes.Add("placeholder", placeholder);
+    }
+
+    if (additionalHtmlAttributes != null)
+    {
+        foreach (var attr in additionalHtmlAttributes)
+        {
+            htmlAttributes[attr.Key] = attr.Value;
+        }
+    }
+}
+
+@Html.Raw(useRow ? "<div class='row' >" : "")
+@Html.Raw(useNoPaddingRow ? "<div class='row noPaddingRows' >" : "")
+<div class="@cssClass">
+    <div class="row">
+        <div class="col-sm-12">
+            <div>
+                @Html.LabelFor(x => x, label, new
+                {
+                    @class = "control-label"
+                })
+            </div>
+            <div class="inputcontainer" @inputStyle>
+                @if (isTextArea)
+                {
+                    @Html.TextAreaFor(x => x, 3, 1, htmlAttributes)
+                }
+                else
+                {
+                    @Html.TextBoxFor(x => x, htmlAttributes)
+                }
+                <i class="fa fa-check validinputcb @validcbExtraClass" aria-hidden="true"></i>
+                <i class="requiredsymbol @validcbExtraClass">*</i>
+            </div>
+            @if (price.HasValue)
+            {
+                <span class="questionprice">@price.Value.ToString("c0")</span>
+            }
+            <span></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            @Html.ValidationMessageFor(x => x, errorMsg, new
+            {
+                @class = "text-danger"
+            })
+        </div>
+    </div>
+</div>
+@Html.Raw(useNoPaddingRow ? "</div>" : "")
+@Html.Raw(useRow ? "</div>" : "")

@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model EduadminCoursePortal.Models.Booking.BookingCreatedModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+<div class="topText">
+    <h2>@Localizer["BookingThanks"]!</h2>
+    <p>
+        @Localizer["ConfirmationHasBeenSent"].
+        <br />
+        @if (!string.IsNullOrWhiteSpace(Model.ContactUsEmail) || !string.IsNullOrWhiteSpace(Model.Phone))
+        {
+            <span>@Localizer["QuestionsContactUs"]</span>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.ContactUsEmail))
+        {
+            <a href="mailto:@Model.ContactUsEmail"> @Model.ContactUsEmail </a>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.Phone))
+        {
+            <span>@Model.Phone</span>
+        }
+    </p>
+</div>

@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using EduadminCoursePortal.Helpers
+@using Microsoft.Extensions.Localization
+@model CourseTemplatesModel
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+@{
+    foreach (var item in Model.CourseTemplatesWithEvents)
+    {
+        <div class="template-panel">
+            <div class="template-panel-heading">
+                <h4>@Html.Raw(item.ObjectName)</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row flexWrapper">
+                    <div class="col-sm-8">
+                        <p>
+                            @Html.Raw(item.CourseDescriptionShort)
+                        </p>
+                        @Html.ActionLink(Localizer["ReadMore"].ToString(), "CourseTemplate", "CourseTemplate", new { CoursetemplateId = item.CourseTemplateId.ToString() }, new { @class = "readMoreLink" })
+                    </div>
+                    @Html.Partial("_UpcomingEvents", item)
+                </div>
+            </div>
+        </div>
+    }
+}

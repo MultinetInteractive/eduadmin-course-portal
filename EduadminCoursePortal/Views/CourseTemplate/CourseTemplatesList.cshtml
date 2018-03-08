@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+
+@using EduadminCoursePortal.Resources
+
+@model EduadminCoursePortal.Models.CourseTemplatesModel
+    
+@inject IStringLocalizer<EduadminCoursePortal.SharedResources> Localizer
+ 
+<div>
+    <h2>@Localizer["OurCourses"]</h2>
+    @if (Model.Subjects.Count > 0 || Model.Categories.Count > 1)
+    {
+        <div class="filterWrapper">
+            <div class="row">
+                @if (Model.Subjects.Count > 0)
+                {
+                    <div class="col-lg-3 col-sm-4">
+                        @Html.DropDownList("dropDownSubject", Model.Subjects.Select(x => new SelectListItem { Value = x.SubjectID.ToString(), Text = x.SubjectName }), Localizer["SelectSubject"].ToString(), new { @style = "width: 250px;", @class = "text-input" })
+                    </div>
+                }
+                @if (Model.Categories.Count > 1)
+                {
+                    <div class="col-lg-3 col-sm-4">
+                        @Html.DropDownList("dropDownCategory", Model.Categories.Select(x => new SelectListItem { Value = x.CategoryId.ToString(), Text = x.CategoryName }), Localizer["SelectCategory"].ToString(), new { @style = "width: 250px;", @class = "text-input" })
+                    </div>
+                }
+                <div class="col-lg-2 col-sm-3">
+                    <a class="btn btn-default template-btn mobileMarginTop-10" style="float: right" href="javascript:void(0)" onclick="EducationFilterObjects.FilterObjects($('#dropDownSubject').val(), $('#dropDownCategory').val())">@Localizer["Search"]</a>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <div class="loading"></div>
+    <div id="courseWrapper">
+        @Html.Partial("_CourseTemplates", Model)
+    </div>
+</div>
+
+<script>
+    $(function() {
+        EducationFilterObjects.Init('@Url.Action("GetCourseTemplatesBySelection", "CourseTemplate")');
+    });
+
+    $(document).ready(function () {
+        $(".loading").hide();
+    });
+</script>

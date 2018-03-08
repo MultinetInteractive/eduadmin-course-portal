@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using EduadminCoursePortal.Models.Booking;
+@using Microsoft.Extensions.Localization;
+@using EduadminCoursePortal.Helpers;
+
+@model Session
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+<div class="row">
+    <div class="form-group">
+        <div class="col-xs-12 col-sm-5">
+            @Html.HiddenFor(x => x.SessionId)
+            @Html.HiddenFor(x => x.PriceNameId)
+            <label class="cblabel">
+                @Html.CheckBoxFor(x => x.Participating, new
+                {
+                    @class = "formValue cbsubevent",
+                    data_type = "checkbox",
+                    data_value = Model.Price
+                })
+                @Model.Name
+            </label>
+        </div>
+        <div class="col-sm-3 col-xs-4">
+            <span>@(Model.StartDate.ToString("HH:mm - ") + Model.EndDate.ToString("HH:mm"))</span>
+        </div>
+        <div class="col-sm-3 col-xs-4">
+            @if (Model.Price > 0)
+            {
+                <span>@(Model.Price + " kr")</span>
+            }
+            else
+            {
+                <span>@Localizer["NoCost"]</span>
+            }
+        </div>
+        @Html.ValidationMessageFor(x => x.SessionId, null, new
+        {
+            @class = "text-danger"
+        })
+        <div class="visible-xs" style="height: 10px;">
+        </div>
+    </div>
+</div>

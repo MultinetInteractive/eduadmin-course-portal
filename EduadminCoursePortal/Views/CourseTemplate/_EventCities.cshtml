@@ -1,0 +1,86 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using EduadminCoursePortal.Helpers
+@using Microsoft.Extensions.Localization
+@model CourseTemplateModel
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+<div class="col-lg-4 col-sm-6 col-xs-12">
+    @if (Model.EventCities == null || !Model.EventCities.Any())
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>@Localizer["NoUpcomingEventsExist"]</h4>
+            </div>
+        </div>
+    }
+    @foreach (var eventCity in Model.EventCities)
+    {
+        <h4>@Localizer["ComingEvents"] @(string.IsNullOrEmpty(eventCity.City) ? Localizer["AtUnknownLocation"].ToString() : Localizer["InLower"] + " " + eventCity.City)</h4>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @foreach (var item in eventCity.Events)
+                {
+                    <div class="eduobj-event-wrapper row noPaddingRows">
+                        <div class="col-sm-8 col-xs-9 dateAndPlaceCol">
+                            @if (item.EventDates != null && item.EventDates.Count > 0)
+                            {
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <span>@item.EventDates.Count @Localizer["DaysBetween"] @FormHelper.GetShortDateString(item.EventDates.First().StartDateForEvent, item.EventDates.Last().EndDateForEvent)</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a onclick="openPopup(@item.CourseTemplateId, '@Html.Raw(Localizer["Schedule"])')">@Localizer["Schedule"]</a>
+                                        <div id="schedule_@item.CourseTemplateId" style="display: none">
+                                            @Html.Partial("CourseTemplateSchedulePopup", new SchedulePopupModel {EventDatesList = item.EventDates})
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                @(Html.Raw(FormHelper.GetHtmlDateString(item.StartDate, item.EndDate)));
+                                <br/>
+                            }
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <span>@item.AddressName</span>
+                                </div>
+                            </div>
+                            @if (item.ParticipantNrLeft <= 5)
+                            {
+                                <br/>
+                                <span>@Localizer["SeatsLeft"] @item.ParticipantNrLeft.ToString()</span>
+                            }
+                        </div>
+                        <div class="col-sm-4 col-xs-3">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    @if (item.IsFullyBooked)
+                                    {
+                                        <span class="text-danger pull-right">@Localizer["FullyBooked"]</span>
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink(Localizer["Book"].ToString(), "Index", "Booking", new
+                                        {
+                                            eventId = item.EventId,
+                                            courseTemplateId = Model.CourseTemplateId
+                                        }, new
+                                        {
+                                            @class = "btn btn-default template-btn pull-right",
+                                            target = "_blank"
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+

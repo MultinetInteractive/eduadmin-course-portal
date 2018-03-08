@@ -1,0 +1,25 @@
+﻿@using System.Linq
+@using Microsoft.AspNetCore.Mvc.Localization
+@using EduadminCoursePortal.Helpers
+@using Microsoft.Extensions.Localization
+@model SchedulePopupModel
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+<div>
+    <table style="margin:auto">
+        @foreach (var item in Model.EventDatesList)
+        {
+            var startDateStr = item.StartDateForEvent == null ? "Inget startdatum hittades" : ((DateTime)item.StartDateForEvent).ToString("dddd");
+            var startDateShortStr = item.StartDateForEvent == null ? "Inget startdatum hittades" : ((DateTime)item.StartDateForEvent).ToShortTimeString();
+            var endDateStr = item.EndDateForEvent == null ? "Inget slutdatum hittades" : ((DateTime)item.EndDateForEvent).ToString("dd'/'MM");
+            var endDateShortStr = item.EndDateForEvent == null ? "Inget slutdatum hittades" : ((DateTime)item.EndDateForEvent).ToShortTimeString();
+            <tr>
+                <td class="tableItem">@startDateStr</td>
+                <td class="tableItem">@endDateStr</td>
+                <td class="tableItem">@Localizer["FromLower"]</td>
+                <td>@startDateShortStr @Localizer["ToLower"] @endDateShortStr</td>
+            </tr>
+        }
+    </table>
+</div>

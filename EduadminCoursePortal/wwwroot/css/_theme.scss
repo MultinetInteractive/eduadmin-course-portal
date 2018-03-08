@@ -1,0 +1,51 @@
+﻿$light-blue: #0a71d0;
+$dark-red: #a94442;
+
+$kendo-blue: #3F51B5;
+
+$font-family: 'Open Sans', sans-serif;
+$link-color: $light-blue;
+
+$panel-heading-color: #d33;
+$panel-heading-color-lighter: lighten($panel-heading-color, 8%);
+$panel-heading-text-color: white;
+$panel-border-color: white;
+$panel-body-background: white;
+$panel-body-background-darker: darken($panel-body-background, 2%);
+$valid-input-color: green;
+$required-symbol-color: $dark-red;
+$link-hover: $light-blue;
+$header-link: #999;
+$active-sort-link-color: $light-blue;
+$sort-link-color: #999;
+$date-square-color: $light-blue;
+$fieldset-btn-bg-color:#b0aaee;
+$fieldset-btn-border-color:#958ee8;
+$validation-error-color: $dark-red;
+$pager-background-color: #ddd;
+$pager-link-color: #123;
+$kendo-link-bg-color: $kendo-blue;
+$kendo-scheduler-border-color: $kendo-blue;
+
+$navbar-background-color:#d33;
+$navbar-toggle-border: 1px solid darken($navbar-background-color, 15%);
+$navbar-border:none;
+$navbar-color: #fff;
+$navbar-link-color: #fff;
+$active-nav-tab-background: lighten($navbar-background-color, 20%); 
+$logout-color: darken($navbar-color, 10%);
+$template-panel-heading-background-color: #d33;
+$template-panel-heading-color: white;
+$template-panel-background-color: white;
+$template-panel-color: black;
+$template-panel-border : /*1px solid #300311;*/ none;
+
+$filter-wrapper-background-color: #efefef;
+$filter-wrapper-border: /*1px solid #300311;*/ none;
+$template-btn-color: #fff;
+$template-btn-background-color:#6ab165;
+$template-btn-background-color-darker: darken($template-btn-background-color, 10%);
+$template-btn-border: #6ab165;
+
+$kendoDatePickerBackground: #d33;
+$kendoDatePickerBackgroundLighter: lighten($kendoDatePickerBackground, 20%);

@@ -1,0 +1,885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abort" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="Absent" xml:space="preserve">
+    <value>Frånvarande</value>
+  </data>
+  <data name="AddAsParticipant" xml:space="preserve">
+    <value>Lägg till som deltagare</value>
+  </data>
+  <data name="Additional" xml:space="preserve">
+    <value>Additional</value>
+  </data>
+  <data name="AddNameLess" xml:space="preserve">
+    <value>(+{0} namnlösa)</value>
+  </data>
+  <data name="AddParticipant" xml:space="preserve">
+    <value>Lägg till deltagare</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adress</value>
+  </data>
+  <data name="AllParticipantsNameLess" xml:space="preserve">
+    <value>Alla deltagare är namnlösa</value>
+  </data>
+  <data name="AllPlaces" xml:space="preserve">
+    <value>- Alla platser -</value>
+  </data>
+  <data name="AnErrorHasOccurred" xml:space="preserve">
+    <value>Ett fel uppstod.</value>
+  </data>
+  <data name="AnErrorOccurred" xml:space="preserve">
+    <value>Ett fel har inträffat</value>
+  </data>
+  <data name="ApplicationMethod" xml:space="preserve">
+    <value>Ansökningsmetod</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Är du säker?</value>
+  </data>
+  <data name="AtLeastOneParticipant" xml:space="preserve">
+    <value>Minst en deltagare måste vara vald</value>
+  </data>
+  <data name="AttendanceRegistration" xml:space="preserve">
+    <value>Närvaroregistrering</value>
+  </data>
+  <data name="AttendanceUpdated" xml:space="preserve">
+    <value>Närvaro har uppdaterats.</value>
+  </data>
+  <data name="Attending" xml:space="preserve">
+    <value>Närvarande</value>
+  </data>
+  <data name="AttendingAmount" xml:space="preserve">
+    <value>Närvarande {0}/{1}</value>
+  </data>
+  <data name="AtUnknownLocation" xml:space="preserve">
+    <value>på obestämd ort</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Tillbaka</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Boka</value>
+  </data>
+  <data name="BookingCreated" xml:space="preserve">
+    <value>Bokning skapad</value>
+  </data>
+  <data name="BookingFailedReloadPage" xml:space="preserve">
+    <value>Bokningen misslyckades och ett fel uppstod när felmeddelanden skulle visas. Prova att ladda om sidan och försök igen.</value>
+  </data>
+  <data name="BookingFor" xml:space="preserve">
+    <value>Bokningen gäller för</value>
+  </data>
+  <data name="BookingLinkInvalid" xml:space="preserve">
+    <value>Bokningslänken är inte giltig.</value>
+  </data>
+  <data name="BookingNumber" xml:space="preserve">
+    <value>Bokningsnummer</value>
+  </data>
+  <data name="BookingThanks" xml:space="preserve">
+    <value>Tack för din bokning</value>
+  </data>
+  <data name="BookLower" xml:space="preserve">
+    <value>boka</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ort</value>
+  </data>
+  <data name="CivicNumberError" xml:space="preserve">
+    <value>Du måste ange ett giltigt personnummer</value>
+  </data>
+  <data name="CivRegNumber" xml:space="preserve">
+    <value>Personnummer</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="ComingEvents" xml:space="preserve">
+    <value>Kommande tillfällen</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Företag</value>
+  </data>
+  <data name="CompanyInformation" xml:space="preserve">
+    <value>Företagsinformation</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Företagsnamn</value>
+  </data>
+  <data name="CompanyNameMissing" xml:space="preserve">
+    <value>Företagsnamn saknas</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Bekräfta</value>
+  </data>
+  <data name="ConfirmationHasBeenSent" xml:space="preserve">
+    <value>En bekräftelse har skickats till den angivna mailen</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Bekräfta nytt lösenord</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Kontaktinformation</value>
+  </data>
+  <data name="ContactInformation1" xml:space="preserve">
+    <value>Kontaktuppgifter</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Kostnad</value>
+  </data>
+  <data name="CouldntCreateBookingTryAgain" xml:space="preserve">
+    <value>Kunde inte skapa bokningen, var god försök igen.</value>
+  </data>
+  <data name="CouldntCreateCustomerTryAgain" xml:space="preserve">
+    <value>Kunde inte skapa kunden, var god kontrollera dina uppgifter och försök igen.</value>
+  </data>
+  <data name="CourseContent" xml:space="preserve">
+    <value>Kursinnehåll</value>
+  </data>
+  <data name="CourseFullyBooked" xml:space="preserve">
+    <value>Kursen är fullbokad</value>
+  </data>
+  <data name="CourseGoals" xml:space="preserve">
+    <value>Kursmål</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>Kurser</value>
+  </data>
+  <data name="CourseSiteAndRegistration" xml:space="preserve">
+    <value>Kurssida och anmälan</value>
+  </data>
+  <data name="CreateParticipantErrorLogInAgain" xml:space="preserve">
+    <value>Fel vid skapande av deltagare. Var god logga in igen.</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Nuvarande lösenord</value>
+  </data>
+  <data name="CustomerContact" xml:space="preserve">
+    <value>Kontaktperson</value>
+  </data>
+  <data name="CustomerInformation" xml:space="preserve">
+    <value>Företagsuppgifter</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="DaysBetween" xml:space="preserve">
+    <value>dagar mellan</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-post</value>
+  </data>
+  <data name="EmailInvalidFormat" xml:space="preserve">
+    <value>Ogiltigt format på e-post</value>
+  </data>
+  <data name="EmailMissing" xml:space="preserve">
+    <value>E-postadress saknas</value>
+  </data>
+  <data name="EmailWrong" xml:space="preserve">
+    <value>E-postadressen är felaktig</value>
+  </data>
+  <data name="EnterAtLeastOneError" xml:space="preserve">
+    <value>You must enter at least one {0}</value>
+  </data>
+  <data name="EnterParticipantName" xml:space="preserve">
+    <value>Fyll i namn på deltagare</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Något gick fel...vi ber om ursäkt.</value>
+  </data>
+  <data name="Evaluation" xml:space="preserve">
+    <value>utvärdering</value>
+  </data>
+  <data name="EventFullyBooked" xml:space="preserve">
+    <value>Tillfället är fullbokat.</value>
+  </data>
+  <data name="EventFullyBookedEx" xml:space="preserve">
+    <value>Tillfället är fullbokat!</value>
+  </data>
+  <data name="EventLower" xml:space="preserve">
+    <value>tillfälle</value>
+  </data>
+  <data name="EventsLower" xml:space="preserve">
+    <value>tillfällen</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>This field is required</value>
+  </data>
+  <data name="FieldMustBeChecked" xml:space="preserve">
+    <value>This field must be checked in order to continue.</value>
+  </data>
+  <data name="FiltrationError" xml:space="preserve">
+    <value>fel i filtreringen</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Förnamn</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Från</value>
+  </data>
+  <data name="FromLower" xml:space="preserve">
+    <value>från</value>
+  </data>
+  <data name="FullyBooked" xml:space="preserve">
+    <value>Fullbokat</value>
+  </data>
+  <data name="FullyBookedLower" xml:space="preserve">
+    <value>fullbokat</value>
+  </data>
+  <data name="GetEvents" xml:space="preserve">
+    <value>Hämta tillfällen</value>
+  </data>
+  <data name="Goal" xml:space="preserve">
+    <value>Mål</value>
+  </data>
+  <data name="GoBackToStartPage" xml:space="preserve">
+    <value>Gå tillbaka till startsidan</value>
+  </data>
+  <data name="GoToLoginPage" xml:space="preserve">
+    <value>Gå till sidan för inloggning</value>
+  </data>
+  <data name="GradeHasBeenSetWarning" xml:space="preserve">
+    <value>Om kryssrutan saknas betyder det att närvaron är låst då deltagaren redan har fått ett betyg.</value>
+  </data>
+  <data name="GradeNotSet" xml:space="preserve">
+    <value>Betyg ej angivet</value>
+  </data>
+  <data name="GradesUpdated" xml:space="preserve">
+    <value>Betyg har uppdaterats.</value>
+  </data>
+  <data name="HideCourses" xml:space="preserve">
+    <value>Dölj kurser</value>
+  </data>
+  <data name="InfoTextHalfRow" xml:space="preserve">
+    <value>infotext - halv rad</value>
+  </data>
+  <data name="InfoTextWholeRow" xml:space="preserve">
+    <value>infotext - hel rad</value>
+  </data>
+  <data name="InLower" xml:space="preserve">
+    <value>i</value>
+  </data>
+  <data name="InterestRegistration" xml:space="preserve">
+    <value>Intresseanmälan</value>
+  </data>
+  <data name="InterestRegistrationCreated" xml:space="preserve">
+    <value>Intresseanmälan skapad!</value>
+  </data>
+  <data name="InterestRegistrationError" xml:space="preserve">
+    <value>Något gick fel. Intresseanmälan ej skapad.</value>
+  </data>
+  <data name="InvalidBirthDate" xml:space="preserve">
+    <value>Invalid date of birth</value>
+  </data>
+  <data name="InvalidEducationLink" xml:space="preserve">
+    <value>Ogiltig utbildningslänk</value>
+  </data>
+  <data name="InvalidFieldType" xml:space="preserve">
+    <value>Ogiltig fälttyp</value>
+  </data>
+  <data name="InvalidNumber" xml:space="preserve">
+    <value>Ogiltigt nummer</value>
+  </data>
+  <data name="InvalidOrganizationalNumber" xml:space="preserve">
+    <value>Ogiltigt organisationsnummer</value>
+  </data>
+  <data name="InvalidOrganizationNumber" xml:space="preserve">
+    <value>Du måste ange ett giltigt organisationsnummer</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Ogiltigt lösenord</value>
+  </data>
+  <data name="InvalidPasswordOrEmail" xml:space="preserve">
+    <value>Ogiltigt lösenord eller E-post</value>
+  </data>
+  <data name="InvalidPhoneNumber" xml:space="preserve">
+    <value>Invalid phone number</value>
+  </data>
+  <data name="Invoice" xml:space="preserve">
+    <value>Faktura</value>
+  </data>
+  <data name="InvoiceAddress" xml:space="preserve">
+    <value>Fakturaadress</value>
+  </data>
+  <data name="InvoiceCity" xml:space="preserve">
+    <value>Fakturaort</value>
+  </data>
+  <data name="LastApplicationDate" xml:space="preserve">
+    <value>Sista ansökningsdatum</value>
+  </data>
+  <data name="LastApplicationDay" xml:space="preserve">
+    <value>Sista ansökningsdag</value>
+  </data>
+  <data name="LastDatePassedOrEventRemoved" xml:space="preserve">
+    <value>Antingen så har sista anmälningsdag passerat eller så har tillfället tagits bort.</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Efternamn</value>
+  </data>
+  <data name="LoggedInAs" xml:space="preserve">
+    <value>Inloggad som:</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Logga in</value>
+  </data>
+  <data name="LogInChangePassword" xml:space="preserve">
+    <value>Du måste logga in för att kunna ändra ditt lösenord</value>
+  </data>
+  <data name="LogIntoMyPages" xml:space="preserve">
+    <value>Logga in i 'Mina Sidor'</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Logga ut</value>
+  </data>
+  <data name="MadeBookings" xml:space="preserve">
+    <value>Gjorda bokningar</value>
+  </data>
+  <data name="MarkAttendance" xml:space="preserve">
+    <value>Sätt närvaro</value>
+  </data>
+  <data name="MarkAttendingParticipants" xml:space="preserve">
+    <value>Markera de deltagare som är närvarande.</value>
+  </data>
+  <data name="MarkPassedParticipants" xml:space="preserve">
+    <value>Markera de deltagare som är godkända.</value>
+  </data>
+  <data name="MarkUnmarkAllParticipants" xml:space="preserve">
+    <value>Markera / avmarkera alla deltagare.</value>
+  </data>
+  <data name="Meter" xml:space="preserve">
+    <value>mätare</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobil</value>
+  </data>
+  <data name="MobileMissing" xml:space="preserve">
+    <value>Mobilnummer saknas</value>
+  </data>
+  <data name="MoreCourseLower" xml:space="preserve">
+    <value>till kurs</value>
+  </data>
+  <data name="MoreCoursesLower" xml:space="preserve">
+    <value>till kurser</value>
+  </data>
+  <data name="MustEnterEmail" xml:space="preserve">
+    <value>Måste fylla i e-post</value>
+  </data>
+  <data name="MustEnterFirstName" xml:space="preserve">
+    <value>Måste fylla i förnamn</value>
+  </data>
+  <data name="MustEnterLastName" xml:space="preserve">
+    <value>Måste fylla i efternamn</value>
+  </data>
+  <data name="MustEnterPhoneNumber" xml:space="preserve">
+    <value>Måste fylla i telefonnummer</value>
+  </data>
+  <data name="MustEnterValidEmail" xml:space="preserve">
+    <value>Fyll i en giltig e-post</value>
+  </data>
+  <data name="MustSelectAnOption" xml:space="preserve">
+    <value>Du måste välja ett alternativ</value>
+  </data>
+  <data name="MustSelectPrice" xml:space="preserve">
+    <value>Du måste välja ett pris</value>
+  </data>
+  <data name="MustSubmitAddress" xml:space="preserve">
+    <value>Du måste ange adress</value>
+  </data>
+  <data name="MustSubmitCity" xml:space="preserve">
+    <value>Du måste ange ort</value>
+  </data>
+  <data name="MustSubmitCivRegNumber" xml:space="preserve">
+    <value>Du måste ange personnummer</value>
+  </data>
+  <data name="MustSubmitCompanyName" xml:space="preserve">
+    <value>Du måste ange företagsnamn</value>
+  </data>
+  <data name="MustSubmitCurrentPassword" xml:space="preserve">
+    <value>Du måste ange ditt nuvarande lösenord \n</value>
+  </data>
+  <data name="MustSubmitEmail" xml:space="preserve">
+    <value>Du måste ange e-post</value>
+  </data>
+  <data name="MustSubmitFirstName" xml:space="preserve">
+    <value>Du måste ange förnamn</value>
+  </data>
+  <data name="MustSubmitLastName" xml:space="preserve">
+    <value>Du måste ange efternamn</value>
+  </data>
+  <data name="MustSubmitOrganizationalNumber" xml:space="preserve">
+    <value>Du måste ange organisationsnummer</value>
+  </data>
+  <data name="MustSubmitPhone" xml:space="preserve">
+    <value>Du måste ange telefonnummer</value>
+  </data>
+  <data name="MustSubmitText" xml:space="preserve">
+    <value>Du måste ange {0}</value>
+  </data>
+  <data name="MustSubmitValidEmail" xml:space="preserve">
+    <value>Du måste ange en giltig e-post</value>
+  </data>
+  <data name="MustSubmitZipCode" xml:space="preserve">
+    <value>Du måste ange postnummer</value>
+  </data>
+  <data name="MustUploadFile" xml:space="preserve">
+    <value>You have to upload a file for {0}</value>
+  </data>
+  <data name="MyPages" xml:space="preserve">
+    <value>Mina sidor</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="NameMissing" xml:space="preserve">
+    <value>Namn saknas</value>
+  </data>
+  <data name="NameNamelessNr" xml:space="preserve">
+    <value>Namnge namnlösa {0}st</value>
+  </data>
+  <data name="NatCurrShortLower" xml:space="preserve">
+    <value>kr</value>
+  </data>
+  <data name="NationalCurrencyShortLower" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="NewParagraph" xml:space="preserve">
+    <value>Nytt stycke</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nytt lösenord</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
+  <data name="NoBookingsFound" xml:space="preserve">
+    <value>Inga bokningar hittades</value>
+  </data>
+  <data name="NoComingCourses" xml:space="preserve">
+    <value>Inga framtida kurser</value>
+  </data>
+  <data name="NoCost" xml:space="preserve">
+    <value>Kostnadsfri</value>
+  </data>
+  <data name="NoCoursesToday" xml:space="preserve">
+    <value>Inga kurser idag</value>
+  </data>
+  <data name="NoParticipants" xml:space="preserve">
+    <value>Inga deltagare</value>
+  </data>
+  <data name="NoPreviousCourses" xml:space="preserve">
+    <value>Inga passerade kurser</value>
+  </data>
+  <data name="NoPriceSelected" xml:space="preserve">
+    <value>Inget pris valt</value>
+  </data>
+  <data name="NotArrived" xml:space="preserve">
+    <value>Ej ankommen</value>
+  </data>
+  <data name="NotAttending" xml:space="preserve">
+    <value>Ej närvarande</value>
+  </data>
+  <data name="NotEnoughSeatsLeft" xml:space="preserve">
+    <value>Det finns inte tillräckligt med platser kvar på kursen</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Meddelande</value>
+  </data>
+  <data name="NotGraded" xml:space="preserve">
+    <value>Ej betygsatt</value>
+  </data>
+  <data name="NotLoggedIn" xml:space="preserve">
+    <value>Ej Inloggad</value>
+  </data>
+  <data name="NotPaid" xml:space="preserve">
+    <value>Ej betald</value>
+  </data>
+  <data name="NotPassed" xml:space="preserve">
+    <value>Ej godkända</value>
+  </data>
+  <data name="NoValueGiven" xml:space="preserve">
+    <value>Inget värde angett</value>
+  </data>
+  <data name="NoValueGiven2" xml:space="preserve">
+    <value>Inget värde angivet</value>
+  </data>
+  <data name="NoVatLower" xml:space="preserve">
+    <value>exkl moms</value>
+  </data>
+  <data name="NrAttending" xml:space="preserve">
+    <value>st närvarande</value>
+  </data>
+  <data name="NrLower" xml:space="preserve">
+    <value>st</value>
+  </data>
+  <data name="NrNameless" xml:space="preserve">
+    <value>st namnlösa</value>
+  </data>
+  <data name="NrParticipants" xml:space="preserve">
+    <value>{0} deltagare</value>
+  </data>
+  <data name="NrParticipantsLower" xml:space="preserve">
+    <value>st deltagare</value>
+  </data>
+  <data name="NumberParticipants" xml:space="preserve">
+    <value>Antal deltagare</value>
+  </data>
+  <data name="OldPasswordInvalid" xml:space="preserve">
+    <value>Ditt gamla lösenord stämmer inte</value>
+  </data>
+  <data name="OneChoiceQuestion" xml:space="preserve">
+    <value>envalsfråga</value>
+  </data>
+  <data name="OneChoiceQuestionHorizontal" xml:space="preserve">
+    <value>envalsfråga horisontell</value>
+  </data>
+  <data name="OneMoreCourse" xml:space="preserve">
+    <value>1 till kurs</value>
+  </data>
+  <data name="OnlyNrSeatsLeft" xml:space="preserve">
+    <value>Det finns endast {0} platser kvar på tillfället</value>
+  </data>
+  <data name="OrganizationalNumber" xml:space="preserve">
+    <value>Organisationsnummer</value>
+  </data>
+  <data name="Organizer" xml:space="preserve">
+    <value>Organisatör</value>
+  </data>
+  <data name="OtherInformation" xml:space="preserve">
+    <value>Övrig information</value>
+  </data>
+  <data name="OurCourses" xml:space="preserve">
+    <value>Våra kurser</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Sida</value>
+  </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Sidan kunde inte hittas</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Betald</value>
+  </data>
+  <data name="Participant" xml:space="preserve">
+    <value>Deltagare</value>
+  </data>
+  <data name="ParticipantChanged" xml:space="preserve">
+    <value>Deltagare ändrad</value>
+  </data>
+  <data name="ParticipantRemoved" xml:space="preserve">
+    <value>Deltagare avbokad</value>
+  </data>
+  <data name="ParticipantsCreated" xml:space="preserve">
+    <value>Deltagare skapade</value>
+  </data>
+  <data name="ParticipantsMustBePositive" xml:space="preserve">
+    <value>Antal deltagare måste vara ett positivt numeriskt värde</value>
+  </data>
+  <data name="ParticipantsNamed" xml:space="preserve">
+    <value>Deltagare namngivna</value>
+  </data>
+  <data name="ParticipantsNamingError" xml:space="preserve">
+    <value>Kunde inte namnge deltagare</value>
+  </data>
+  <data name="ParticipantsOnBooking" xml:space="preserve">
+    <value>Deltagare på bokningen</value>
+  </data>
+  <data name="Passed" xml:space="preserve">
+    <value>Godkända</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  <data name="PasswordSaved" xml:space="preserve">
+    <value>Nytt lösenord sparat!</value>
+  </data>
+  <data name="PasswordsNotMatching" xml:space="preserve">
+    <value>Dina lösenord matchar inte \n</value>
+  </data>
+  <data name="PaymentInformation" xml:space="preserve">
+    <value>Betalningsinformation</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Betalningsmetod</value>
+  </data>
+  <data name="PersonalPages" xml:space="preserve">
+    <value>Personalsidor</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="PhoneNumberWrongFormat" xml:space="preserve">
+    <value>Telefonnumret är i felaktigt format</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Plats:</value>
+  </data>
+  <data name="Prerequisites" xml:space="preserve">
+    <value>Förkunskaper</value>
+  </data>
+  <data name="PreviousCourses" xml:space="preserve">
+    <value>Tidigare kurser</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Pris</value>
+  </data>
+  <data name="PrintDiploma" xml:space="preserve">
+    <value>Skriv ut diplom</value>
+  </data>
+  <data name="PrintEvaluationStatistics" xml:space="preserve">
+    <value>Skriv ut utvärderingsstatistik</value>
+  </data>
+  <data name="PrintParticipantList" xml:space="preserve">
+    <value>Skriv ut deltagarlista</value>
+  </data>
+  <data name="QuestionsContactUs" xml:space="preserve">
+    <value>Om ni har frågor eller inte mottagit någon bekräftelse inom loppet av 24 timmar var vänlig kontakta</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Läs mer</value>
+  </data>
+  <data name="RemoveParticipantErrorReloadPage" xml:space="preserve">
+    <value>Kunde inte avboka deltagaren, var god ladda om sidan och försök igen om problemet kvarstår</value>
+  </data>
+  <data name="RoomName" xml:space="preserve">
+    <value>Rumsnamn</value>
+  </data>
+  <data name="RowBreak" xml:space="preserve">
+    <value>radbrytning</value>
+  </data>
+  <data name="RunInitFirst" xml:space="preserve">
+    <value>Kör init först</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="SavePassword" xml:space="preserve">
+    <value>Spara lösenord</value>
+  </data>
+  <data name="SavingGradesWarning" xml:space="preserve">
+    <value>Genom att spara så kommer betygen att låsas.</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Schema</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="SearchGaveNoResults" xml:space="preserve">
+    <value>Sökningen gav inga resultat.</value>
+  </data>
+  <data name="SeatLeftLower" xml:space="preserve">
+    <value>Plats kvar</value>
+  </data>
+  <data name="SeatsLeft" xml:space="preserve">
+    <value>Platser kvar:</value>
+  </data>
+  <data name="SeatsLeftLower" xml:space="preserve">
+    <value>platser kvar</value>
+  </data>
+  <data name="SelectArrivalStatus" xml:space="preserve">
+    <value>- Välj närvarostatus</value>
+  </data>
+  <data name="SelectCategory" xml:space="preserve">
+    <value>--Välj Kategori--</value>
+  </data>
+  <data name="SelectGrade" xml:space="preserve">
+    <value>- Välj betyg</value>
+  </data>
+  <data name="SelectSubject" xml:space="preserve">
+    <value>--Välj Ämne--</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Skicka</value>
+  </data>
+  <data name="SetGrade" xml:space="preserve">
+    <value>Sätt betyg</value>
+  </data>
+  <data name="SetGrades" xml:space="preserve">
+    <value>Betygsättning</value>
+  </data>
+  <data name="SortOn" xml:space="preserve">
+    <value>Sortera på:</value>
+  </data>
+  <data name="SpecNrAttending" xml:space="preserve">
+    <value> ({0} närvarande)</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TargetGroup" xml:space="preserve">
+    <value>Målgrupp</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Till</value>
+  </data>
+  <data name="TodaysCourses" xml:space="preserve">
+    <value>Dagens kurser</value>
+  </data>
+  <data name="ToggleNavigation" xml:space="preserve">
+    <value>Toggle navigation</value>
+  </data>
+  <data name="ToLower" xml:space="preserve">
+    <value>till</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Totalpris</value>
+  </data>
+  <data name="UnexpectedBookingError" xml:space="preserve">
+    <value>Ett oväntat fel uppstod när bokningen skulle skapas, var god försök igen.</value>
+  </data>
+  <data name="UnexpectedBookingErrorReloadPage" xml:space="preserve">
+    <value>Ett oväntat fel uppstod när bokningen skulle skapas, var god ladda om sidan och försök igen.</value>
+  </data>
+  <data name="UnknownQuestionTypeID" xml:space="preserve">
+    <value>Okänt frågetypsid</value>
+  </data>
+  <data name="UpcomingBookings" xml:space="preserve">
+    <value>Kommande bokningar</value>
+  </data>
+  <data name="UpcomingCourses" xml:space="preserve">
+    <value>Kommande kurser</value>
+  </data>
+  <data name="ViewMissing" xml:space="preserve">
+    <value>Vyn saknas!</value>
+  </data>
+  <data name="WrongParticipantNamingControlInformation" xml:space="preserve">
+    <value>Fel vid namngivning av deltagare. Var god kontrollera uppgifterna</value>
+  </data>
+  <data name="WrongParticipantNamingLogInAgain" xml:space="preserve">
+    <value>Fel vid namngivning av deltagare. Var god logga in igen.</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>Postnummer</value>
+  </data>
+  <data name="QuestionIsMandatory" xml:space="preserve">
+    <value>Denna fråga är obligatorisk</value>
+  </data>
+  <data name="MustCheckCheckBox" xml:space="preserve">
+    <value>Du måste kryssa i rutan</value>
+  </data>
+  <data name="NoUpcomingEventsExist" xml:space="preserve">
+    <value>Det finns inga kommande tillfällen för denna utbildning</value>
+  </data>
+</root>

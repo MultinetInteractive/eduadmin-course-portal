@@ -1,0 +1,200 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.Extensions.Localization
+@using EduadminCoursePortal.Models.Booking
+@model Question
+    
+@inject IStringLocalizer<SharedResources> Localizer
+
+@{
+    var model = Model;
+    var labelWidth = 12;
+    var inputWidth = 12;
+    List<KeyValuePair<string, object>> priceAttr = new List<KeyValuePair<string, object>>();
+}
+@{
+    if (!(Model is SelectQuestion))
+    {
+        @Html.HiddenFor(x => x.AnswerId)
+    }
+}
+@Html.HiddenFor(x => x.QuestionTypeID)
+@if (Model is NumberQuestion)
+{
+    if (Model.Price.HasValue)
+    {
+        priceAttr.Add(new KeyValuePair<string, object>("data-type", "numerical"));
+        priceAttr.Add(new KeyValuePair<string, object>("data-value", (int)Model.Price.Value));
+        priceAttr.Add(new KeyValuePair<string, object>("class", "form-control formValue"));
+    }
+
+    @Html.EditorFor(x => ((NumberQuestion)x).Answer, "_TextInput", new
+    {
+        label = Model.QuestionText,
+        inputType = "number",
+        inputWidth = 12,
+        labelWidth = 12,
+        htmlAttributes = priceAttr,
+        price = Model.Price
+    })
+}
+else if (Model is TextQuestion)
+{
+    var textModel = (TextQuestion)Model;
+
+    if (Model.Price.HasValue)
+    {
+        priceAttr.Add(new KeyValuePair<string, object>("data-type", "text"));
+        priceAttr.Add(new KeyValuePair<string, object>("data-value", (int)Model.Price.Value));
+        priceAttr.Add(new KeyValuePair<string, object>("class", "form-control formValue"));
+    }
+
+    @Html.EditorFor(x => ((TextQuestion)x).Answer, "_TextInput", new
+    {
+        label = Model.QuestionText,
+        isTextArea = textModel.DisplayAsTextArea,
+        inputWidth = 12,
+        labelWidth = 12,
+        htmlAttributes = priceAttr,
+        price = Model.Price
+    })
+    if (Model.ViewNrField)
+    {
+        @Html.EditorFor(x => x.AnswerNumber, "_TextInput", new
+        {
+            label = "Antal",
+            inputType = "number",
+            inputWidth = 12,
+            labelWidth = 12
+        })
+    }
+}
+else if (Model is CheckQuestion)
+{
+    var requiredText = Localizer["MustSelectAnOption"].ToString();
+    var checkModel = (CheckQuestion)Model;
+    var label = checkModel.QuestionText;
+
+    @Html.EditorFor(x => ((CheckQuestion)x).Checked, "_CheckBoxInput", new
+    {
+        label = label,
+        labelWidth = labelWidth,
+        inputWidth = inputWidth,
+        answerText = Model.AnswerText,
+        price = Model.Price
+    })
+}
+else if (Model is MultipleCheckQuestion)
+{
+    var checkModel = (MultipleCheckQuestion)Model;
+    var label = checkModel.QuestionText;
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-@labelWidth">
+                @Html.LabelFor(x => x, label)
+            </div>
+            <div class="col-sm-@inputWidth">
+                @for (int i = 0; i < checkModel.Alternatives.Count; i++)
+                {
+                    var alternative = checkModel.Alternatives[i];
+                    var htmlAttributes = alternative.Price.HasValue ?
+                        new
+                        {
+                            data_type = "checkbox",
+                            data_value = (decimal)(int)alternative.Price.Value,
+                            @class = "formValue"
+                        } : null;
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label>
+                                @Html.CheckBoxFor(x => ((MultipleCheckQuestion)x).Alternatives[i].Checked, htmlAttributes)
+                                @checkModel.Alternatives[i].AlternativeText
+                                @Html.HiddenFor(x => ((MultipleCheckQuestion)x).Alternatives[i].AnswerId)
+                            </label>
+                            @if (alternative.Price.HasValue)
+                            {
+                                <span class="questionprice">@alternative.Price.Value.ToString("c0")</span>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-@inputWidth">
+                @Html.ValidationMessageFor(x => ((CheckQuestion)x).Checked, null, new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}
+else if (Model is SelectQuestion)
+{
+    var requiredText = Localizer["MustSelectAnOption"].ToString();
+    var selectModel = Model as SelectQuestion;
+    var cssClass = ViewData["cssClass"] ?? "col-sm-12";
+    var useRow = (bool?)ViewData["useRow"] ?? false;
+    var label = selectModel.QuestionText;
+
+    @Html.Raw(useRow ? "<div class='row' >" : "")
+    <div class="@cssClass">
+        <div class="form-group row">
+            <div class="col-sm-@labelWidth">
+                @Html.LabelFor(x => x.AnswerId, label, new
+                {
+                    @class = "control-label"
+                })
+            </div>
+            <div class="col-sm-@inputWidth">
+                @switch (selectModel.DisplayType)
+                {
+                    case SelectQuestionDisplayType.Dropdown:
+                        @Html.DropDownListFor(x => x.AnswerId, selectModel.Alternatives.Select(x => new SelectListItem
+                        {
+                            Text = x.AlternativeText,
+                            Value = x.AnswerId.ToString(),
+                            Selected = x.Selected
+                        }), new
+                        {
+                            @class = "form-control",
+                            @style = "width:auto;"
+                        })
+                        break;
+                    case SelectQuestionDisplayType.Radiobutton:
+                        foreach (var alternative in selectModel.Alternatives)
+                        {
+                            <label class="questionalternativelabel">
+                                @Html.RadioButtonFor(x => x.AnswerId, alternative.AnswerId)
+                                @alternative.AlternativeText
+                            </label>
+                            <br/>
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                <br />
+                @Html.ValidationMessageFor(x => x.AnswerId, requiredText, new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    @Html.Raw(useRow ? "</div>" : "")
+    if (Model.ViewNrField)
+    {
+        @Html.EditorFor(x => x.AnswerNumber, "_TextInput", new
+        {
+            label = "Antal",
+            inputType = "number",
+            inputWidth = 12,
+            labelWidth = 12,
+            htmlAttributes = priceAttr,
+            price = Model.Price
+        })
+    }
+}
+else if (Model is InfoTextQuestion)
+{
+    <div class="col-sm-12">
+        @Html.Raw(Model.QuestionText)
+    </div>
+}

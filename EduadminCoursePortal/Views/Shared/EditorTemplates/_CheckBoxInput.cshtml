@@ -1,0 +1,32 @@
+﻿@model bool
+
+@{
+    var label = (string)ViewData["label"] ?? "";
+    var labelWidth = (int?)ViewData["labelWidth"] ?? 12;
+    var inputWidth = (int?)ViewData["inputWidth"] ?? 12;
+    var answerText = (string)ViewData["answerData"] ?? "";
+    var price = (decimal?)ViewData["price"] ?? 0;
+}
+
+
+
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-@labelWidth">
+            @Html.LabelFor(x => x, label)
+        </div>
+        <div class="col-sm-@inputWidth">
+            <label class="questionalternativelabel">
+                @answerText
+                @Html.CheckBoxFor(x => x, new
+                {
+                    data_type = "checkbox",
+                    data_value = price,
+                    @class = "formValue"
+                })
+            </label>
+            <br />
+            @Html.ValidationMessageFor(x => x, null, new { @class = "text-danger" })
+        </div>
+    </div>
+</div>

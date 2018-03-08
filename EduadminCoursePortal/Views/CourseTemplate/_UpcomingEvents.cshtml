@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using EduadminCoursePortal.Helpers
+@using Microsoft.Extensions.Localization
+@model CourseTemplateWithEvents
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+<div class="col-sm-4 dateAndBookCol" id="topDates@(Model.CourseTemplateId)">
+    @{
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 style="margin-top: 0; margin-bottom: 0;">@Localizer["ComingEvents"]</h4>
+            </div>
+        </div>
+        for (var i = 0; i < Model.Events.Count; i++)
+        {
+            <div class="@(Model.CourseTemplateId)" style="display:@(i == 0 ? "inline" : "none")">
+                <table style="width: 100%;">
+                    @if (Model.Events[i].EventDates != null && Model.Events[i].EventDates.Count > 0)
+                    {
+                        <tr>
+                            <td colspan="3">@Model.Events[i].EventDates.Count @Localizer["DaysBetween"] @FormHelper.GetShortDateString(Model.Events[i].EventDates.First().StartDateForEvent, Model.Events[i].EventDates.Last().EndDateForEvent)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <a onclick="openPopup(@Model.Events[i].EventId, '@Html.Raw(Localizer["Schedule"])')">@Localizer["Schedule"]</a>
+                                <div id="schedule_@Model.Events[i].EventId" style="display:none">
+                                    @Html.Partial("CourseTemplateSchedulePopup", new SchedulePopupModel { EventDatesList = Model.Events[i].EventDates })
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="2">@FormHelper.GetDateString(Model.Events[i].StartDate, Model.Events[i].EndDate)</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            @(Model.Events[i].City)
+                        </td>
+                        <td>
+                            @if (!(Model.Events[i].ParticipantNrLeft < 0))
+                            {
+                                @Html.ActionLink(Localizer["Book"].ToString(), "Index", "Booking", new { eventId = Model.Events[i].EventId, courseTemplateId = Model.Events[i].CourseTemplateId }, new { @class = "btn template-btn pull-right" })
+                            }
+                            else
+                            {
+                                <span class="pull-right text-danger">@Localizer["FullyBooked"]</span>
+                            }
+                        </td>
+                    </tr>
+                    @if (Model.Events[i].ParticipantNrLeft <= 5 && Model.Events[i].ParticipantNrLeft > 0)
+                    {
+                        var participantWarning = Model.Events[i].ParticipantNrLeft <= 3 ? "class=text-danger" : "";
+                        var seatsLeftText = Model.Events[i].ParticipantNrLeft > 1 ? Localizer["SeatsLeftLower"] : Localizer["SeatLeftLower"];
+                        <tr>
+                            <td @participantWarning colspan="2">
+                                @(Model.Events[i].ParticipantNrLeft)<span> @seatsLeftText</span>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <hr style="margin-top: 5px; margin-bottom: 5px;" />
+            </div>
+            if (Model.Events.Count > 1 && i == Model.Events.Count - 1)
+            {
+                var moreCoursesText = Model.Events.Count - 1 == 1 ? Localizer["OneMoreCourse"] : Model.Events.Count - 1 + " " + Localizer["MoreCoursesLower"];
+                <a id="link@(Model.CourseTemplateId)" style="float:left" onclick="showOrHideTable( @(Model.CourseTemplateId), '@Html.Raw(Localizer["HideCourses"])', '@Html.Raw(Localizer["MoreCoursesLower"])', '@Html.Raw(Localizer["MoreCourseLower"])')">
+                    <span>@moreCoursesText</span>
+                </a>
+            }
+        }
+    }
+</div>
+

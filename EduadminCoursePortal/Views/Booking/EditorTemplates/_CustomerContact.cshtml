@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@model EduadminCoursePortal.Models.Booking.CustomerContact
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+<div id="customerContactWrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>@Localizer["ContactInformation1"]</h3>
+        </div>
+    </div>
+    @Html.HiddenFor(x => x.CustomerContactID)
+    <div class="row">
+        @Html.EditorFor(x => x.FirstName, "_TextInput")
+        @Html.EditorFor(x => x.LastName, "_TextInput")
+    </div>
+    <div class="row">
+        @Html.EditorFor(x => x.Email, "_TextInput")
+    </div>
+</div>

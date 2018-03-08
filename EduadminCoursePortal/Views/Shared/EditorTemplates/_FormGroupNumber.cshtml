@@ -1,0 +1,18 @@
+﻿@model object
+<div class="form-group">
+    <div>
+        @Html.LabelFor(x => x, new
+        {
+            @class = "inputLabel"
+        })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x, new
+        {
+            @type = "number",  @class = "text-input"
+        })
+    </div>
+    <div>
+        @Html.ValidationMessageFor(x => x)
+    </div>
+</div>

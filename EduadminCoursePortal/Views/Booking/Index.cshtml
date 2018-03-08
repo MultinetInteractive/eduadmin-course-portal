@@ -1,0 +1,135 @@
+﻿@using System.Net.Http
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+
+@model EduadminCoursePortal.Models.Booking.BookModel
+
+@inject IStringLocalizer<SharedResources> Localizer
+
+@{
+    ViewBag.BackUrl = Model.BackUrl;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Localizer["Book"];
+}
+
+@if (Model == null)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="text-danger">@Localizer["BookingLinkInvalid"]</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="text-danger">@Localizer["LastDatePassedOrEventRemoved"]</h3>
+        </div>
+    </div>
+}
+else
+{
+    <form asp-controller="Booking" asp-action="CreateBooking" 
+          data-ajax-success="BookingBook.Success" data-ajax-failure="BookingBook.Failure" 
+          data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" 
+          data-ajax-update="#content" id="bookform">
+        @Html.HiddenFor(x => x.EventId)
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>@Model.EventName</h1>
+                <p>@Html.Raw(Model.Description.Replace("<h3>", "<h4>").Replace("</h3>", "</h4>"))</p>
+            </div>
+        </div>
+        @if (Model.FullyBooked)
+        {
+            <div id="fullyBooked" class="row">
+                <div class="col-sm-12">
+                    <h2 class="text-danger">@Localizer["EventFullyBookedEx"]</h2>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group-wrapper">
+                <div class="fieldsWrapper">
+                    @Html.EditorFor(x => x.Customer, "_Customer")
+                </div>
+            </div>
+            <div class="form-group-wrapper">
+                <div class="fieldsWrapper">
+                    @Html.EditorFor(x => x.CustomerContact, "_CustomerContact")
+                    <div id="customerContactAsParticipant" class="row" style="margin-top: -10px;">
+                        <div class="col-sm-12">
+                            <a href="javascript:void(0)" id="addAsParticipant" onclick="BookingParticipants.AddAsParticipant()">@Localizer["AddAsParticipant"]</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group-wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 style="display: inline-block;">@Localizer["Participant"]</h3>
+                        <i onclick="BookingParticipants.AddParticipant(null, null)" class="fa fa-plus-square-o itemFocused" style="color: #73dc79; margin-left: 5px; font-size: 26px !important; display: inline-block;"></i>
+                    </div>
+                </div>
+                <div id="participantsWrapper">
+                    @Html.EditorFor(x => x.Participants, "_Participants")
+                    <div id="additionalParticipantsTarget"></div>
+                </div>
+            </div>
+            <div class="form-group-wrapper">
+                <div class="fieldsWrapper">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.EditorFor(x => x.BookingQuestions, "_Questions")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fieldsWrapper">
+                <div class="row" id="rowTotalPrice">
+                    <label class="col-sm-1">@Localizer["TotalPrice"]</label>
+                    <div class="col-sm-8">
+                        <span id="spnTotalPrice"></span>
+                    </div>
+                </div>
+                <div class="row" id="loading" style="display: none;">
+                    <div class="col-sm-12">
+                        <img src="~/images/loader_transp.gif" alt=""/>
+                    </div>
+                </div>
+                <div class="row text-danger">
+                    <div class="col-sm-12">
+                        <span id="spnCustomErrors"></span>
+                        <ul id="ulCustomErrors"></ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.ValidationSummary(true)
+                    </div>
+                </div>
+                <button type="submit" id="btnBook" class="btn btn-success">@Localizer["Book"]</button>
+            </div>
+        }
+    </form>
+
+
+    <script src="~/js/formprice.js" rel="stylesheet"></script>
+    <script type="text/javascript">
+        var addCustomerContact = true;
+        $(document).ready(function() {
+            FormPrice.Init("@Html.Raw(Localizer["NatCurrShortLower"])", "@Html.Raw(Localizer["NoVatLower"])");
+            BookingBook.Init("@Html.Raw(Localizer["UnexpectedBookingError"])",
+                "@Html.Raw(Localizer["BookingFailedReloadPage"])",
+                "@Html.Raw(Localizer["UnexpectedBookingErrorReloadPage"])");
+        });
+
+        $(function () {
+            BookingParticipants.init("@Url.Action("GetParticipant", "Booking", new { courseTemplateId = Model.CourseTemplateId, reqCivRegNumber = Model.RequireCivicRegistrationNumber.ToString().ToLower() })");
+            $("form").submit(function () {
+                FormSubmit.call(this);
+            });
+            IndexBookingOnReady();
+        });
+    </script>
+}
