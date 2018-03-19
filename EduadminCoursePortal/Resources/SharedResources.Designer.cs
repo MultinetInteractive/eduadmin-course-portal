@@ -250,6 +250,24 @@ namespace EduadminCoursePortal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bokningen innehåller redan inbokade deltagare.
+        /// </summary>
+        internal static string BookingContainsBookedParticipants {
+            get {
+                return ResourceManager.GetString("BookingContainsBookedParticipants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bokningen innehåller deltagare som redan är inbokade på överlappande delmoment.
+        /// </summary>
+        internal static string BookingContainsOverlapPersons {
+            get {
+                return ResourceManager.GetString("BookingContainsOverlapPersons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bokning skapad.
         /// </summary>
         internal static string BookingCreated {

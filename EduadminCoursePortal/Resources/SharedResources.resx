@@ -882,4 +882,10 @@
   <data name="NoUpcomingEventsExist" xml:space="preserve">
     <value>Det finns inga kommande tillfällen för denna utbildning</value>
   </data>
+  <data name="BookingContainsBookedParticipants" xml:space="preserve">
+    <value>Bokningen innehåller redan inbokade deltagare</value>
+  </data>
+  <data name="BookingContainsOverlapPersons" xml:space="preserve">
+    <value>Bokningen innehåller deltagare som redan är inbokade på överlappande delmoment</value>
+  </data>
 </root>

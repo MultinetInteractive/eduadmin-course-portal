@@ -102,9 +102,38 @@ namespace EduadminCoursePortal.Controllers
             {
                 newBooking = await client.Booking.PostAsync(booking);
             }
-            catch
+            catch(EduAdminApi.EduAdminException<ForbiddenResponse> ex)
             {
-                ModelState.AddModelError("", _localizer["CouldntCreateBookingTryAgain"]);
+                var errorResult = ex.Result;
+                var errorStr = "";
+
+                foreach (var item in errorResult.Errors)
+                {
+                    //If multiple errors would exist, separate these
+                    if (!string.IsNullOrWhiteSpace(errorStr))
+                        errorStr += "<br />";
+
+                    switch (item?.ErrorCode ?? 0)
+                    {
+                        case 40:
+                            //No seats left
+                            errorStr += _localizer["NotEnoughSeatsLeft"];
+                            break;
+                        case 45:
+                            //Person already booked
+                            errorStr += _localizer["BookingContainsBookedParticipants"];
+                            break;
+                        case 200:
+                            //Person exists on overlapping sessions
+                            errorStr += _localizer["BookingContainsOverlapPersons"];
+                            break;
+                        default:
+                            errorStr += _localizer["CouldntCreateBookingTryAgain"];
+                            break;
+                    }
+                }
+
+                ModelState.AddModelError("", errorStr);
                 return GetJsonResultFromModelStateErrors();
             }
 
