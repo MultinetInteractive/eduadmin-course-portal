@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Localization\**" />
+    <Content Remove="Localization\**" />
+    <EmbeddedResource Remove="Localization\**" />
+    <None Remove="Localization\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="lib\Kendo.Mvc.dll" />
     <None Remove="lib\Kendo.Mvc.xml" />
   </ItemGroup>
@@ -35,8 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="lib\" />
-    <Folder Include="Localization\" />
+    <Folder Include="wwwroot\npm\" />
   </ItemGroup>
 
   <ItemGroup>

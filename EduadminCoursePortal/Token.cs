@@ -38,8 +38,15 @@ namespace EduadminCoursePortal
 
             var client = new EduAdminAPIClient.Client();
 
-            if (Constants.API.userName.Length > 0 && Constants.API.password.Length > 0)
-                token = await client.Authenticate(Constants.API.userName, Constants.API.password);
+            try
+            {
+                if (Constants.API.userName.Length > 0 && Constants.API.password.Length > 0)
+                    token = await client.Authenticate(Constants.API.userName, Constants.API.password);
+            }
+            catch
+            {
+                throw new NotImplementedException("The token used is not valid.");
+            }
 
             var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(30));
 

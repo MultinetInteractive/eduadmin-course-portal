@@ -14,7 +14,7 @@ namespace EduadminCoursePortal.Models.Booking
         [Display(Name = "FirstName")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "MustSubmitLastName")]
-        [Display(Name = "FirstName")]
+        [Display(Name = "LastName")]
         public string LastName { get; set; }
         [Required(ErrorMessage = "MustSubmitEmail")]
         [EmailAddress(ErrorMessage = "MustSubmitValidEmail")]

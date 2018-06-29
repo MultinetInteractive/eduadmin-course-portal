@@ -1,0 +1,15 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "scripts": {
+    "build_all": "cd wwwroot/lib && npm run build_all"
+  },
+  "devDependencies": {
+    "bootstrap": "3.1.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "jquery-ajax-unobtrusive": "^3.2.4",
+    "jquery-validation": "^1.17.0",
+    "jquery-validation-unobtrusive": "^3.2.8"
+  }
+}

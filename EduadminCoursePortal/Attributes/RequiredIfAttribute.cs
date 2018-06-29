@@ -26,7 +26,13 @@ namespace EduadminCoursePortal.Attributes
             var type = instance.GetType();
             var propValue = type.GetProperty(PropertyName.ToString())?.GetValue(instance, null);
 
-            return propValue?.ToString() != DesiredValue.ToString() ? ValidationResult.Success : new ValidationResult(ErrorMessage);
+            if (propValue?.ToString() == DesiredValue.ToString())
+            {
+                ValidationResult result = base.IsValid(value, context);
+                return result;
+            }
+
+            return ValidationResult.Success;
         }
     }
 }

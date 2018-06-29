@@ -23,9 +23,9 @@ namespace EduadminCoursePortal.Controllers
         //[HttpGet("Lista")]
         //[Route("~/")]
         [HttpGet]
-        public async Task<IActionResult> CourseTemplatesList()
+        public async Task<IActionResult> CourseTemplatesList(int? subjectId = null, int? categoryId = null)
         {
-            var courseTemplates = await _courseTemplateService.GetCourseTemplates();
+            var courseTemplates = await _courseTemplateService.GetCourseTemplates(subjectId, categoryId);
 
             return View("CourseTemplatesList", courseTemplates);
         }
@@ -40,6 +40,7 @@ namespace EduadminCoursePortal.Controllers
             return View("CourseTemplate", courseTemplate);
         }
 
+        [Route("Filter")]
         public async Task<ActionResult> GetCourseTemplatesBySelection(int? subjectID, int? categoryID)
         {
             var courseTemplates = await _courseTemplateService.GetCourseTemplates(subjectID, categoryID);
