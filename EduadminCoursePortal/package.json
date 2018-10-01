@@ -5,7 +5,7 @@
     "build_all": "cd wwwroot/lib && npm run build_all"
   },
   "devDependencies": {
-    "bootstrap": "3.1.1",
+    "bootstrap": "^4.1.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "jquery-ajax-unobtrusive": "^3.2.4",

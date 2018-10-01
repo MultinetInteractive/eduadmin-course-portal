@@ -26,12 +26,16 @@
     ]
   },
   {
+    "outputFileName": "wwwroot/css/font-awesome.min.css",
+    "inputFiles": [ "node_modules/font-awesome/css/font-awesome.min.css" ]
+  },
+  {
     "outputFileName": "wwwroot/css/bootstrap.min.css",
     "inputFiles": [ "node_modules/bootstrap/dist/css/bootstrap.min.css" ]
   },
   {
     "outputFileName": "wwwroot/npm/bootstrap.min.js",
-    "inputFiles": [ "node_modules/bootstrap/dist/bootstrap.min.js" ]
+    "inputFiles": [ "node_modules/bootstrap/dist/js/bootstrap.min.js" ]
   },
   {
     "outputFileName": "wwwroot/npm/jquery.min.js",
