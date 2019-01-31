@@ -21,6 +21,9 @@ namespace EduadminCoursePortal.Models.Booking
         public string Description { get; set; }
         public string BackUrl { get; set; }
         public bool RequireCivicRegistrationNumber { get; set; }
+        public bool HasError { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? LastApplicationDate { get; set; }
         public BookModel()
         {
             Participants = new List<Participant>();

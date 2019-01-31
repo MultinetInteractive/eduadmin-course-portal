@@ -295,6 +295,15 @@ namespace EduadminCoursePortal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tillfället är inte bokningsbart längre, tiden för anmälan har passerat..
+        /// </summary>
+        internal static string BookingLastDayPassedError {
+            get {
+                return ResourceManager.GetString("BookingLastDayPassedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bokningslänken är inte giltig..
         /// </summary>
         internal static string BookingLinkInvalid {

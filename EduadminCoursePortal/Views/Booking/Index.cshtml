@@ -13,7 +13,7 @@
     ViewBag.Title = Localizer["Book"];
 }
 
-@if (Model == null)
+@if (Model.HasError)
 {
     <div class="row">
         <div class="col-sm-12">
@@ -33,6 +33,8 @@ else
           data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" 
           data-ajax-update="#content" id="bookform">
         @Html.HiddenFor(x => x.EventId)
+        @Html.HiddenFor(x => x.LastApplicationDate)
+        @Html.HiddenFor(x => x.StartDate)
         <div class="row">
             <div class="col-sm-12">
                 <h1>@Model.EventName</h1>

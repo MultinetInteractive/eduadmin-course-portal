@@ -888,4 +888,7 @@
   <data name="BookingContainsOverlapPersons" xml:space="preserve">
     <value>Bokningen innehåller deltagare som redan är inbokade på överlappande delmoment</value>
   </data>
+  <data name="BookingLastDayPassedError" xml:space="preserve">
+    <value>Tillfället är inte bokningsbart längre, tiden för anmälan har passerat.</value>
+  </data>
 </root>

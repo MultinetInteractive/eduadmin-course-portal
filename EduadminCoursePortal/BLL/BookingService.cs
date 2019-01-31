@@ -12,6 +12,7 @@ namespace EduadminCoursePortal.BLL
     public interface IBookingService
     {
         Task<BookModel> GetNewBookModel(int eventId, int courseTemplateId, string backUrl);
+        bool DateHasPassed(DateTime? date);
     }
     public class BookingService : IBookingService
     {
@@ -29,7 +30,7 @@ namespace EduadminCoursePortal.BLL
 
             var courseTemplateQuery = "?$select=CourseDescription,CourseTemplateId,RequireCivicRegistrationNumber&" + 
                                         "$expand=Events(" +
-                                            "$select=EventId,EventName,ParticipantNumberLeft;" +
+                                            "$select=EventId,EventName,ParticipantNumberLeft,StartDate,LastApplicationDate;" +
                                             "$expand=" +
                                                 "PriceNames(" +
                                                     "$select=PriceNameId,PriceNameDescription,Price)," +
@@ -40,11 +41,26 @@ namespace EduadminCoursePortal.BLL
                                       $"$filter=EventId eq {eventId})&$filter=ShowOnWeb eq true";
 
             var courseTemplate = await client.CourseTemplate.GetSingleAsync(courseTemplateId, courseTemplateQuery);
-            var currentEvent = courseTemplate.Events.FirstOrDefault();
+            var currentEvent = courseTemplate?.Events?.FirstOrDefault();
+
+            var lastApplicationDate = currentEvent != null && currentEvent.LastApplicationDate.HasValue ? (DateTime?)currentEvent.LastApplicationDate.Value.DateTime : null;
+            var startDate = currentEvent != null && currentEvent.StartDate.HasValue ? (DateTime?)currentEvent.StartDate.Value.DateTime : null;
+
+            if (currentEvent == null || DateHasPassed(startDate) || DateHasPassed(lastApplicationDate))
+            {
+                return new BookModel
+                {
+                    HasError = true,
+                    BackUrl = backUrl
+                };
+            }
+
             var questions = await GetBookingQuestions(eventId, client);
 
             return new BookModel
             {
+                StartDate = startDate,
+                LastApplicationDate = lastApplicationDate,
                 Description = courseTemplate.CourseDescription,
                 BookingQuestions = questions.BookingQuestions,
                 EventId = currentEvent?.EventId ?? 0,
@@ -56,6 +72,11 @@ namespace EduadminCoursePortal.BLL
                 Participants = GetAndSetParticipants(currentEvent, courseTemplate, questions.ParticipantQuestions),
                 BackUrl = backUrl
             };
+        }
+
+        public bool DateHasPassed(DateTime? date)
+        {
+            return (date.HasValue && date.Value <= DateTime.Now);
         }
 
         private static List<Models.Participant> GetAndSetParticipants(CourseTemplateEvent currentEvent,

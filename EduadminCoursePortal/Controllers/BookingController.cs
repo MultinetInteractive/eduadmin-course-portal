@@ -55,6 +55,12 @@ namespace EduadminCoursePortal.Controllers
             if (!ModelState.IsValid)
                 return GetJsonResultFromModelStateErrors();
 
+            if (_bookingService.DateHasPassed(createBookingModel.StartDate) || _bookingService.DateHasPassed(createBookingModel.LastApplicationDate))
+            {
+                ModelState.AddModelError("", _localizer["BookingLastDayPassedError"]);
+                return GetJsonResultFromModelStateErrors();
+            }
+
             var newToken = await _token.GetNewToken();
             var client = new EduAdminAPIClient.Client(newToken);
             

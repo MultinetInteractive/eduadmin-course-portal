@@ -11,6 +11,10 @@ namespace EduadminCoursePortal.Models.Booking
         [Required]
         public int EventId { get; set; }
         [Required]
+        public DateTime? LastApplicationDate { get; set; }
+        [Required]
+        public DateTime? StartDate { get; set; }
+        [Required]
         public List<CreateParticipant> Participants { get; set; }
         [Required]
         public Customer Customer { get; set; }
