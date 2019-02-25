@@ -67,7 +67,7 @@
             if (Model.Events.Count > 1 && i == Model.Events.Count - 1)
             {
                 var moreCoursesText = Model.Events.Count - 1 == 1 ? Localizer["OneMoreCourse"] : Model.Events.Count - 1 + " " + Localizer["MoreCoursesLower"];
-                <a id="link@(Model.CourseTemplateId)" style="float:left" onclick="showOrHideTable( @(Model.CourseTemplateId), '@Html.Raw(Localizer["HideCourses"])', '@Html.Raw(Localizer["MoreCoursesLower"])', '@Html.Raw(Localizer["MoreCourseLower"])')">
+                <a href="javascript:void(0)" id="link@(Model.CourseTemplateId)" style="float:left" onclick="showOrHideTable( @(Model.CourseTemplateId), '@Html.Raw(Localizer["HideCourses"])', '@Html.Raw(Localizer["MoreCoursesLower"])', '@Html.Raw(Localizer["MoreCourseLower"])')">
                     <span>@moreCoursesText</span>
                 </a>
             }
