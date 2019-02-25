@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class="form-group">
-        <div class="col-xs-12 col-sm-5">
+        <div class="col-12 col-sm-5">
             @Html.HiddenFor(x => x.SessionId)
             @Html.HiddenFor(x => x.PriceNameId)
             <label class="cblabel">
@@ -22,10 +22,10 @@
                 @Model.Name
             </label>
         </div>
-        <div class="col-sm-3 col-xs-4">
+        <div class="col-sm-3 col-4">
             <span>@(Model.StartDate.ToString("HH:mm - ") + Model.EndDate.ToString("HH:mm"))</span>
         </div>
-        <div class="col-sm-3 col-xs-4">
+        <div class="col-sm-3 col-4">
             @if (Model.Price > 0)
             {
                 <span>@(Model.Price + " kr")</span>
